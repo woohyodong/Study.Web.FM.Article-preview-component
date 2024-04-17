@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+.bo{border: 1px dotted cyan;}._preview{opacity: 0.0;position: fixed;top: 0;left: 50%;transform: translateX(-50%);}
+:root{
+    --ff:"Manrope", sans-serif;
+    --fw:500;--fw-b:700;
+    --fs:1.3rem;
+
+    --clr-blue-dark-very: hsl(217, 19%, 35%);
+    --clr-blue-dark: hsl(214, 17%, 51%);
+    --clr-blue: hsl(212, 23%, 69%);
+    --clr-blue-light: hsl(210, 46%, 95%);
+
+    --gap: 4rem;
+    --gap-sm:calc(var(--gap) * 0.625);
+    --gap-xsm:calc(var(--gap) * 0.375);
+
+    --tran:all .25s ease;
+    --radius: 1.3rem;
+}
+*, *::before, *::after {box-sizing: border-box;margin: 0;padding: 0;}
+img{display: block;max-width: 100%;}a{text-decoration:none;color:inherit}
+html{font-family: var(--ff);font-size: 62.5%;}
+body{font-size: var(--fs);font-weight: var(--fw);background: var(--clr-blue-light);color: var(--clr-blue);min-height: 100vh;display: flex;justify-content: center;align-items: center;}
+.card{
+    margin: var(--gap-sm);
+    max-width: 730px;
+    min-height: 280px;
+    background-color: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, .15);
+    display: flex;
+
+    & .visual{min-width: 285px;}
+    & .visual img{border-top-left-radius: var(--radius);border-bottom-left-radius: var(--radius); width: 100%;height: 100%; object-fit: cover;}
+    & .content{
+        padding: var(--gap);
+        display: grid;
+        gap: var(--gap-sm);
+
+        & h1, h4{color: var(--clr-blue-dark-very);}
+
+        & .profile {position: relative; display: flex; gap: var(--gap-xsm); align-items: center;}
+        & .profile > img{width: 4rem;height: 4rem;border-radius: 50%;}
+        & .profile a{margin-left: auto;background-color: var(--clr-blue-light);display: inline-flex;justify-content: center;align-items: center; border-radius: 50%;padding: .75rem;; transition: var(--tran);font-size: 1.5em;}
+        & .profile a:hover,& .profile a.active{background-color: var(--clr-blue-dark);color: #fff;}
+    }
+}
