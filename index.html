@@ -10,11 +10,9 @@
   <title>Frontend Mentor | Article preview component</title>  
 </head>
 <body>
-
-  <img src="design/desktop-design.jpg" class="_preview">
-
   <main>
     <section class="card">
+      <input type="checkbox" id="chk-share" class="none">
       <div class="visual">
         <img src="images/drawers.jpg">
       </div>
@@ -34,8 +32,17 @@
             <h4>Michelle Appleton</h4>
             <p>28 Jun 2020</p>
           </div>
-          <a href="javascript:;"><i class='bx bxs-share bx-flip-horizontal' ></i></a>
-        </div>
+          <label for="chk-share" class="btn-share"><i class='bx bxs-share bx-flip-horizontal' ></i></label>
+        </div>        
+        <aside>
+          <span>SHARE</span>
+          <menu>
+            <a href="#"><i class='bx bxl-facebook-square'></i></a>
+            <a href="#"><i class='bx bxl-twitter' ></i></a>
+            <a href="#"><i class='bx bxl-pinterest' ></i></a>
+          </menu>
+        </aside>        
+
       </div>
     </section>
   </main>

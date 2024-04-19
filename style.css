@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-.bo{border: 1px dotted cyan;}._preview{opacity: 0.0;position: fixed;top: 0;left: 50%;transform: translateX(-50%);}
 :root{
     --ff:"Manrope", sans-serif;
     --fw:500;--fw-b:700;
@@ -15,33 +14,98 @@
     --gap-xsm:calc(var(--gap) * 0.375);
 
     --tran:all .25s ease;
-    --radius: 1.3rem;
+    --rad: 1.3rem;--rad-sm:calc(var(--rad) * 0.5);
 }
 *, *::before, *::after {box-sizing: border-box;margin: 0;padding: 0;}
 img{display: block;max-width: 100%;}a{text-decoration:none;color:inherit}
+.none{display: none;}
 html{font-family: var(--ff);font-size: 62.5%;}
 body{font-size: var(--fs);font-weight: var(--fw);background: var(--clr-blue-light);color: var(--clr-blue);min-height: 100vh;display: flex;justify-content: center;align-items: center;}
 .card{
     margin: var(--gap-sm);
     max-width: 730px;
+    min-width: 350px;
     min-height: 280px;
     background-color: #fff;
-    border-radius: var(--radius);
+    border-radius: var(--rad);
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, .15);
     display: flex;
 
     & .visual{min-width: 285px;}
-    & .visual img{border-top-left-radius: var(--radius);border-bottom-left-radius: var(--radius); width: 100%;height: 100%; object-fit: cover;}
+    & .visual img{border-top-left-radius: var(--rad);border-bottom-left-radius: var(--rad); width: 100%;height: 100%; object-fit: cover;}
     & .content{
+        position: relative; 
         padding: var(--gap);
         display: grid;
         gap: var(--gap-sm);
 
         & h1, h4{color: var(--clr-blue-dark-very);}
 
-        & .profile {position: relative; display: flex; gap: var(--gap-xsm); align-items: center;}
+        & .profile {display: flex; gap: var(--gap-xsm); align-items: center;}
         & .profile > img{width: 4rem;height: 4rem;border-radius: 50%;}
-        & .profile a{margin-left: auto;background-color: var(--clr-blue-light);display: inline-flex;justify-content: center;align-items: center; border-radius: 50%;padding: .75rem;; transition: var(--tran);font-size: 1.5em;}
-        & .profile a:hover,& .profile a.active{background-color: var(--clr-blue-dark);color: #fff;}
+        & .btn-share{margin-left: auto;background-color: var(--clr-blue-light);display: inline-flex;justify-content: center;align-items: center; border-radius: 50%;padding: .75rem;; transition: var(--tran);font-size: 1.5em;z-index: 1000;cursor: pointer;}
+        & .btn-share:hover{background-color: var(--clr-blue-dark);color: #fff;}
+
+        & aside{
+            opacity: 0;
+            width: 27rem;
+            position: absolute;
+            z-index: 999;
+            bottom: calc(var(--gap) * 2.3);
+            right: calc(-27rem / 3.5) ;
+            display: flex;
+            align-items: center;
+            gap: var(--gap-xsm);
+            padding-left:  var(--gap-sm);
+            padding-right:  var(--gap-sm);
+            background-color: var(--clr-blue-dark-very);
+            border-radius: var(--rad-sm);
+            transition: var(--tran);
+
+            & span{letter-spacing: 1rem;}
+            & menu a{font-size: 2.5rem; color: #fff;display: inline-block;margin:.5rem;}
+        }
+
+        & aside::after{
+            content: '';
+            position: absolute;
+            bottom: -.5rem;
+            left:50%;
+            transform: translateX(-50%) rotate(45deg);
+
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            background-color: var(--clr-blue-dark-very);
+        }
+    }
+}
+
+#chk-share:checked ~ .content aside{opacity: 1;}
+#chk-share:checked ~ .content .btn-share{background-color: var(--clr-blue-dark);color: #fff;}
+
+@media (min-width:601px){._no-pc{display: none !important;}}
+@media (max-width:600px){
+    ._no-mobile{display: none !important;}
+    :root{--gap: 3.5rem;}
+    .card{
+        flex-direction: column;        
+        & .visual img{height: 200px !important; border-top-left-radius: var(--rad);border-bottom-left-radius: 0; border-top-right-radius: var(--rad); width: 100%;height: 100%; object-fit: cover;}
+
+        & .content{padding-bottom: var(--gap-xsm);}
+
+        & aside{
+            bottom: 0 !important;
+            right:0;
+            left: 0;
+            width: 100% !important;
+            padding-top:  var(--gap-xsm);
+            padding-bottom:  var(--gap-xsm);
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            border-bottom-left-radius: var(--rad);
+            border-bottom-right-radius: var(--rad);
+        }
+        & aside::after{display: none !important;}
     }
 }
